@@ -1,24 +1,28 @@
 #pragma once
+#include "CCounter.h"
+#include "CDataLoader.h"
 
-enum class SPRITE_ID : int
-{
-
-};
+#define MAGENTA RGB(255,0,255)
 
 class CSprite
 {
 public:
+	CSprite();
 	void Load(LPCSTR szAddress);
-	void ChangeSprite(SPRITE_ID id);
+	void ChangeSprite(SPRITE_ID id, bool connection);
+	void Draw(HDC hdc, const Vector2d & position, const Vector2d & size);
+
+	void Update();
 
 private:
-	CImage m_image;
+	SpriteFileData m_data;
 
-	map<SPRITE_ID, Point2D> m_positions;
-	map<SPRITE_ID, Point2D> m_sizes;
+	vector<Point2D> m_position;
+	vector<Point2D> m_size;
+	vector<Point2D> m_index;
 
-	Point2D m_position;
-	Point2D m_size;
+	SPRITE_ID m_currentID;
+	CCounter m_updateCounter;
 };
 
 
