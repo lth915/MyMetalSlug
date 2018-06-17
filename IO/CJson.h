@@ -8,6 +8,8 @@
 #include "../json/include/rapidjson/filereadstream.h"
 #include "../json/include/rapidjson/filewritestream.h"
 
+#include "CDataLoader.h"
+
 class CJson : public CIOManager
 {
 public:
@@ -22,7 +24,13 @@ public:
 
 	virtual void Close();
 
+	void ImageLoad(DATA_NAME name, map<DATA_NAME, CImage>& images);
+	void DataLoad(LPCSTR szAddress, DATA_NAME name, map<DATA_NAME,SpriteFileData>& datas);
 private:
+	void FillStruct(LPCSTR key, SpriteFileData& data, SPRITE_ID id);
+	Point2D ReadArray(LPCSTR key, int indexFirst, int indexNext);
+	int ReadInt(LPCSTR key, int index);
+
 	FILE * m_file;	
 	char m_readBuffer[1000];
 	rapidjson::Document m_document;
