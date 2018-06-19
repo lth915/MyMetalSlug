@@ -31,10 +31,9 @@ enum class SPRITE_ID
 
 struct SpriteFileData
 {
-	map<SPRITE_ID, vector<Point2D>> positions;
-	map<SPRITE_ID, vector<Point2D>> sizes;
-	map<SPRITE_ID, vector<int>> border;
-	int divine = 1;
+	map<SPRITE_ID, Point2D> position;
+	map<SPRITE_ID, Point2D> sizes;
+	map<SPRITE_ID, int> border;
 };
 
 using DATA_NAME = string;
@@ -48,11 +47,9 @@ public:
 	~CDataLoader();
 	void Load(LPCSTR address, DATA_NAME imageName);
 	SpriteFileData GetData(DATA_NAME dataName);
-	CImage GetImage(DATA_NAME name);
 
 private:
 	map<DATA_NAME, SpriteFileData> m_datas;
-	map<DATA_NAME, CImage> m_images;
 	CJson*	m_jsonReader;
 	DATA_NAME m_lastData;
 

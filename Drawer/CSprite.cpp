@@ -3,51 +3,45 @@
 
 CSprite::CSprite(DATA_NAME name)
 {
-	m_updateCounter.SetLimit(CCounter::SecondToFrame(0.3));
-	m_currentID = SPRITE_ID::RIGHT_IDEL;
+	m_updateCounter.SetLimit(CCounter::SecondToFrame(0.15));
+	m_currentID = SPRITE_ID::RIGHT_ATTACK;
 
 	m_name = name;
 }
 
-void CSprite::Load(LPCSTR szAddress)
+void CSprite::Load(LPCSTR dataFileName, LPCTSTR imageFileName)
 {
-	CDataLoader::Get()->Load(szAddress, m_name);
+	CDataLoader::Get()->Load(dataFileName, m_name);
 
 	m_data = CDataLoader::Get()->GetData(m_name);
-	m_image = CDataLoader::Get()->GetImage(m_name);
+	m_image.Load(imageFileName);
+	
+	m_position = m_data.position.find(m_currentID)->second;
+	m_size = m_data.sizes.find(m_currentID)->second;
+	m_index = 0;
 }
 
 void CSprite::ChangeSprite(SPRITE_ID id, bool connection)
 {
-	for (int i = 0; i < m_data.divine; ++i)
-	{
-		m_position[i] = m_data.positions.find(id)->second[i];
-		m_size[i] = m_data.sizes.find(id)->second[i];
-
-		if (!connection) m_index[i] = m_position[i];
-	}
+	m_position = m_data.position.find(m_currentID)->second;
+	m_size = m_data.sizes.find(m_currentID)->second;
+	m_index = 0;
 }
 
 void CSprite::Draw(HDC hdc, const Vector2d & position, const Vector2d & size)
 {
-	for (int i = 0; i < m_data.divine; ++i)
-	{
-		m_image.TransparentBlt(hdc, position.x, position.y, size.x, size.y,
-			m_position[i].x + m_size[i].x * m_index[i].x,
-			m_position[i].y + m_size[i].y * m_index[i].y,
-			m_size[i].x, m_size[i].y, MAGENTA);
-	}
+	m_image.TransparentBlt(hdc, position.x, position.y, size.x, size.y,
+		m_position.x + m_size.x * m_index,
+		m_position.y + m_size.y,
+		m_size.x, m_size.y, MAGENTA);
 }
 
 void CSprite::Draw(HDC hdc, const Vector2d & position)
 {
-	for (int i = 0; i < m_data.divine; ++i)
-	{
-		m_image.TransparentBlt(hdc, position.x, position.y, m_size[i].x, m_size[i].y,
-			m_position[i].x + m_size[i].x * m_index[i].x,
-			m_position[i].y + m_size[i].y * m_index[i].y,
-			m_size[i].x, m_size[i].y, MAGENTA);
-	}
+	m_image.TransparentBlt(hdc, position.x, position.y, 
+		m_size.x * 2, m_size.y * 2,
+		m_position.x + m_size.x * m_index, m_position.y,
+		m_size.x, m_size.y, MAGENTA);
 }
 
 void CSprite::Update()
@@ -56,13 +50,12 @@ void CSprite::Update()
 
 	if (m_updateCounter.isLimit())
 	{
-		for (int i = 0; i < m_data.divine; ++i) {
-			++m_index[i].x;
+		++m_index;
 
-			int border = m_data.border.find(m_currentID)->second[i];
-			if (m_index[i].x > border)
-				m_index[i].x = m_position[i].x;
-		}
+		int border = m_data.border.find(m_currentID)->second;
+
+		if (m_index > border - 1)
+			m_index = 0;
 		m_updateCounter.ResetCount();
 	}
 }

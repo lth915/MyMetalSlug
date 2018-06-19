@@ -8,7 +8,7 @@ class CSprite
 {
 public:
 	CSprite(DATA_NAME name);
-	void Load(LPCSTR szAddress);
+	void Load(LPCSTR dataFileName, LPCTSTR imageFileName);
 	void ChangeSprite(SPRITE_ID id, bool connection);
 	void Draw(HDC hdc, const Vector2d & position, const Vector2d & size);
 	void Draw(HDC hdc, const Vector2d & position);
@@ -19,9 +19,9 @@ private:
 	CImage m_image;
 	SpriteFileData m_data;
 
-	vector<Point2D> m_position;
-	vector<Point2D> m_size;
-	vector<Point2D> m_index;
+	Point2D m_position;
+	Point2D m_size;
+	int m_index;
 
 	SPRITE_ID m_currentID;
 	CCounter m_updateCounter;

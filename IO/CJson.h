@@ -24,7 +24,6 @@ public:
 
 	virtual void Close();
 
-	void ImageLoad(DATA_NAME name, map<DATA_NAME, CImage>& images);
 	void DataLoad(LPCSTR szAddress, DATA_NAME name, map<DATA_NAME,SpriteFileData>& datas);
 private:
 	void FillStruct(LPCSTR key, SpriteFileData& data, SPRITE_ID id);

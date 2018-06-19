@@ -32,19 +32,6 @@ void CJson::Close()
 {
 }
 
-void CJson::ImageLoad(DATA_NAME name, map<DATA_NAME, CImage>& images)
-{
-	if (m_document.HasMember("ImageAddress")) {
-		CImage image;
-		LPCSTR multibyte = m_document["ImageAddress"].GetString();
-		TCHAR address[256] = { 0, };
-		MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, multibyte, strlen(multibyte), address, 256);
-		image.Load(address);
-
-		images.emplace(name, image);
-	}
-}
-
 void CJson::DataLoad(LPCSTR szAddress, DATA_NAME name, map<DATA_NAME,SpriteFileData>& datas)
 {
 	m_file = fopen(szAddress, "rb"); // non-Windows use "r"
@@ -59,65 +46,54 @@ void CJson::DataLoad(LPCSTR szAddress, DATA_NAME name, map<DATA_NAME,SpriteFileD
 	SPRITE_ID id = SPRITE_ID::RIGHT_IDEL;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 
 	key = "RIGHT_UP"; id = SPRITE_ID::RIGHT_UP;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 
 	key = "RIGHT_UP_ATTACK"; id = SPRITE_ID::RIGHT_UP_ATTACK;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_UP_ATTACK_INTERVAL"; id = SPRITE_ID::RIGHT_UP_ATTACK_INTERVAL;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_ATTACK"; id = SPRITE_ID::RIGHT_ATTACK;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_ATTACK_INTERVAL"; id = SPRITE_ID::RIGHT_ATTACK_INTERVAL;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_JUMP"; id = SPRITE_ID::RIGHT_JUMP;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_JUMP_ATTACK"; id = SPRITE_ID::RIGHT_JUMP_ATTACK;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
-	key = "RIGHT_JUMP_ATTACK_INTERVAL"; id = SPRITE_ID::RIGHT_JUMP_ATTACK;
+	key = "RIGHT_JUMP_ATTACK_INTERVAL"; id = SPRITE_ID::RIGHT_JUMP_ATTACK_INTERVAL;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_SWING_1"; id = SPRITE_ID::RIGHT_SWING_1;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_SWING_2"; id = SPRITE_ID::RIGHT_SWING_2;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
 	key = "RIGHT_THROW"; id = SPRITE_ID::RIGHT_THROW;
 	if (m_document.HasMember(key)) {
 		FillStruct(key, inputData, id);
-		datas.emplace(make_pair(name, inputData));
 	}
+	datas.emplace(make_pair(name, inputData));
 }
 
 void CJson::FillStruct(LPCSTR key, SpriteFileData& data, SPRITE_ID id)
@@ -126,13 +102,11 @@ void CJson::FillStruct(LPCSTR key, SpriteFileData& data, SPRITE_ID id)
 	vector<Point2D> v;
 
 	tempData = ReadArray(key, 0, 1);
-	v.emplace_back(tempData);
-	data.positions.emplace(make_pair(id, v));
+	data.position.emplace(make_pair(id, tempData));
 	v.clear();
 	
 	tempData = ReadArray(key, 2, 3);
-	v.emplace_back(tempData);
-	data.sizes.emplace(make_pair(id, v));
+	data.sizes.emplace(make_pair(id, tempData));
 	
 	data.border.emplace(make_pair(id, ReadInt(key, 4)));
 }
@@ -141,7 +115,7 @@ Point2D CJson::ReadArray(LPCSTR key, int indexFirst, int indexNext)
 {
 	Point2D retValue;
 	retValue.x = m_document[key].GetArray()[indexFirst].GetInt();
-	retValue.x = m_document[key].GetArray()[indexNext].GetInt();
+	retValue.y = m_document[key].GetArray()[indexNext].GetInt();
 	return retValue;
 }
 
