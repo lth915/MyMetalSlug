@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{53401a4a-d39d-436a-bb9b-1e3ff5f570d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{8db9a5f3-5434-42ed-9b5e-50917f09b8bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawer">
+      <UniqueIdentifier>{8a16e1c8-67d3-4b25-aae3-708f8c06fe73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{595ac76e-129a-4838-b4f1-6baeac07e3ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{01628b67-008c-4b31-89fe-51e04b02f22a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Subs">
+      <UniqueIdentifier>{bf235520-c603-46e3-8397-ecc3bf52326d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Subs\리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{b2c94a27-d6ab-4700-99a5-5e93e7cdf442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{76a38ee3-2009-4f14-9c4e-6da59ab66c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Collidable">
+      <UniqueIdentifier>{954f5d51-550e-41bb-a9c4-2413e1dc65fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Player">
+      <UniqueIdentifier>{1394b647-7ba8-46a5-a771-fbb4c302a7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Player\State">
+      <UniqueIdentifier>{a61d17a6-4501-4981-aa73-f49799934838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Drawer\Sprite">
+      <UniqueIdentifier>{1d5ea196-470d-41ce-b195-8a59b5ddc790}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>Main\Subs</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Main\Subs</Filter>
+    </ClInclude>
+    <ClInclude Include="CFileStream.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOFileStream.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CIOManager.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CJson.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackBuffer.h">
+      <Filter>Drawer</Filter>
+    </ClInclude>
+    <ClInclude Include="CBackground.h">
+      <Filter>Drawer</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculator.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CCounter.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CSoundPlayer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2D.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="CAppRunner.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameApp.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Main\Subs</Filter>
+    </ClInclude>
+    <ClInclude Include="CMainScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CNullScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CObjectManager.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Collidable.h">
+      <Filter>Object\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoundingCircle.h">
+      <Filter>Object\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="CBoundingBox.h">
+      <Filter>Object\Collidable</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayable.h">
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CMarco.h">
+      <Filter>Object\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerState.h">
+      <Filter>Object\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CDataLoader.h">
+      <Filter>Drawer\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="CSprite.h">
+      <Filter>Drawer\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="CTestScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Main\Subs</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CFileStream.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOFileStream.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CIOManager.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CJson.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackBuffer.cpp">
+      <Filter>Drawer</Filter>
+    </ClCompile>
+    <ClCompile Include="CBackground.cpp">
+      <Filter>Drawer</Filter>
+    </ClCompile>
+    <ClCompile Include="CCounter.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CSoundPlayer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CTimer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="CAppRunner.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameApp.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="CMainScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CNullScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectManager.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidable.cpp">
+      <Filter>Object\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoundingCircle.cpp">
+      <Filter>Object\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoundingBox.cpp">
+      <Filter>Object\Collidable</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayable.cpp">
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CMarco.cpp">
+      <Filter>Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerState.cpp">
+      <Filter>Object\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="CDataLoader.cpp">
+      <Filter>Drawer\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="CSprite.cpp">
+      <Filter>Drawer\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="CTestScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MetalSlug.rc">
+      <Filter>Main\Subs\리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Main\Subs\리소스 파일</Filter>
+    </Image>
+    <Image Include="MetalSlug.ico">
+      <Filter>Main\Subs\리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
