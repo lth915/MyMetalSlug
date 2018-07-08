@@ -8,8 +8,8 @@ public:
 	CMarco();
 	~CMarco();
 
-	virtual void Update() {}
-	virtual void Draw(HDC hdc) {}
+	virtual void Update() { m_sprite->Update(); }
+	virtual void Draw(HDC hdc) { m_sprite->Draw(hdc, m_position); }
 
 	virtual bool IsDelete() { return false; }
 };

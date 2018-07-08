@@ -28,7 +28,7 @@ public:
 	Vector2d GetPosition() const { return m_position;}
 	Collidable* GetBoundary() const { return m_boundary; }
 
-	void ChangeSprite(SPRITE_ID id) { m_sprite.ChangeSprite(id); }
+	void ChangeSprite(SPRITE_ID id, bool connection) { m_sprite->ChangeSprite(id, connection); }
 
 protected:
 	bool IsInScreen() const { return m_boundary->IsInScreen(); }
@@ -37,6 +37,6 @@ protected:
 	
 	Collidable *m_boundary;
 
-	CSprite m_sprite;
+	CSprite *m_sprite;
 };
 
